@@ -1,0 +1,43 @@
+﻿#game {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -khtml-user-select: none;
+}
+
+    #game table {
+        border-collapse: collapse;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 10px;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -khtml-user-select: none;
+    }
+
+    #game td {
+        width: 50px;
+        height: 50px;
+        border: 1px solid black;
+        text-align: center;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -khtml-user-select: none;
+    }
+
+        #game, #game table, #game td::-moz-selection {
+            background: transparent;
+        }
+
+            #game, #game table, #game td::selection {
+                background: transparent;
+            }
+
+                #game > span {
+                    cursor: pointer;
+                }
