@@ -4,110 +4,73 @@
 
 		<link rel="stylesheet" href="Content/app.css" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="base.js"></script>
+        <script type="text/javascript" src="KMaps.js"></script>
+
+        <script type="text/javascript" src="main.js"></script>
 	</head>
 	<body>
 		<h1>KMaps Challenge</h1>
 		
 		<div id="game" onselectstart="return false;">
-			Turn <span id="turn"></span><br/>
+			<span id="turn"></span><br/>
 
-			<table>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-
-			<table>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-
+            <table>
+                <tr data-y="1">
+                    <td data-x="1"></td>
+                    <td data-x="2"></td>
+                    <td data-x="3"></td>
+                    <td data-x="4"></td>
+                </tr>
+                <tr data-y="2">
+                    <td data-x="1"></td>
+                    <td data-x="2"></td>
+                    <td data-x="3"></td>
+                    <td data-x="4"></td>
+                </tr>
+                <tr data-y="3">
+                    <td data-x="1"></td>
+                    <td data-x="2"></td>
+                    <td data-x="3"></td>
+                    <td data-x="4"></td>
+                </tr>
+                <tr data-y="4">
+                    <td data-x="1"></td>
+                    <td data-x="2"></td>
+                    <td data-x="3"></td>
+                    <td data-x="4"></td>
+                </tr>
+            </table>
+            <table>
+                <tr data-y="1">
+                    <td data-x="1"></td>
+                    <td data-x="2"></td>
+                    <td data-x="3"></td>
+                    <td data-x="4"></td>
+                </tr>
+                <tr data-y="2">
+                    <td data-x="1"></td>
+                    <td data-x="2"></td>
+                    <td data-x="3"></td>
+                    <td data-x="4"></td>
+                </tr>
+                <tr data-y="3">
+                    <td data-x="1"></td>
+                    <td data-x="2"></td>
+                    <td data-x="3"></td>
+                    <td data-x="4"></td>
+                </tr>
+                <tr data-y="4">
+                    <td data-x="1"></td>
+                    <td data-x="2"></td>
+                    <td data-x="3"></td>
+                    <td data-x="4"></td>
+                </tr>
+            </table>
+            <br />
 			<span id="randomMoves">Make Random Moves</span>
 			<span id="clearBoard">Clear Board</span>
 		</div>
 
-		<script type="text/javascript">
-			$(function() {
-			    var Game = new function() {
-			        this.Current = 0;
-			        this.Turn = 0;
-			        this.span = $("#turn").text(this.Current);
-
-			        this.Next = function() {
-			            this.span.text(this.Current = this.Current == 0 ? 1 : 0);
-			            if (++this.Turn == 32) this.span.text("Game Over!");
-			        };
-
-			        this.Cell = function(index) {
-			            return $("#game table").find("td").eq(index);
-			        };
-			    };
-
-				$("#game table").find("td").click(function() {
-					var cell = $(this);
-					if(cell.text() == ""){
-						cell.text(Game.Current);
-						Game.Next();
-					}
-				});
-
-				$("#randomMoves").click(function(){
-					for(var i = 0; i < 33; i++){
-						var cell = Game.Cell(i);
-						cell.text(Game.Current);
-						if(Math.random() >= .7)
-							Game.Next();
-					}
-				});
-
-				$("#clearBoard").click(function(){
-					for(var i = 0; i < 33; i++)
-						Game.Cell(i).text("");
-				});
-			});
-		</script>
 	</body>
 </html>
