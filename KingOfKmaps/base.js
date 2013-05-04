@@ -12,3 +12,4 @@ function createArray() {
     }
     return arr;
 }
+//@ sourceMappingURL=base.js.map

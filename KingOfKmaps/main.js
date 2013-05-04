@@ -13,20 +13,36 @@ $(function () {
             Game.MakeMove(new KMaps.Cell(x, y));
         }
     });
-    var getCell = function (index) {
-        return $("#game table").find("td").eq(index);
+    var getCell = function (x, y) {
+        var secondTable = false;
+        if(x > 3) {
+            x -= 4;
+            secondTable = true;
+        }
+        return $("#game table").eq(secondTable ? 1 : 0).find("tr").eq(y).children("td").eq(x);
     };
     $("#randomMoves").click(function () {
-        for(var i = 0; i < 33; i++) {
-            var cell = getCell(i);
-            cell.text(Game.Turn);
-            Game.MakeMove(new KMaps.Cell(cell.data("x") - 1, cell.parent().data("y") - 1));
+        if(Game.IsFinished()) {
+            Game.Reset();
+        }
+        while(!Game.IsFinished()) {
+            var y = Math.floor(Math.random() * 4);
+            var x = Math.floor(Math.random() * 8);
+            var randCell = new KMaps.Cell(x, y);
+            var cell = getCell(x, y);
+            if(cell.text() == "") {
+                Game.MakeMove(randCell);
+                cell.text(Game.Turn);
+            }
         }
     });
     $("#clearBoard").click(function () {
         Game.Reset();
-        for(var i = 0; i < 33; i++) {
-            getCell(i).text("");
+        for(var y = 0; y < 4; y++) {
+            for(var x = 0; x < 8; x++) {
+                getCell(x, y).text("");
+            }
         }
     });
 });
+//@ sourceMappingURL=main.js.map

@@ -3,6 +3,7 @@ var KMaps;
     var Game = (function () {
         function Game(_players) {
             this.Turn = 0;
+            this.moves = 0;
             this.grid = new Grid(8, 4);
             this.players = _players;
         }
@@ -12,9 +13,14 @@ var KMaps;
         Game.prototype.MakeMove = function (cell) {
             this.grid.SetVal(cell, this.Turn);
             this.Turn = this.Turn == 0 ? 1 : 0;
+            this.moves++;
+        };
+        Game.prototype.IsFinished = function () {
+            return this.moves == 32;
         };
         Game.prototype.Reset = function () {
             this.grid.Clear();
+            this.moves = 0;
             this.Turn = 0;
             this.players = [];
         };
@@ -59,3 +65,4 @@ var KMaps;
     })();
     KMaps.Person = Person;    
 })(KMaps || (KMaps = {}));
+//@ sourceMappingURL=KMaps.js.map

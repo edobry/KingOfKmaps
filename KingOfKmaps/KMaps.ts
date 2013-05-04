@@ -4,11 +4,13 @@ module KMaps {
     export class Game {
         constructor(_players: Person[]) {
             this.Turn = 0;
+            this.moves = 0;
             this.grid = new Grid(8, 4);
             this.players = _players;
         }
 
         public Turn: number;
+        private moves: number;
         private grid: Grid;
         private players: Person[];
 
@@ -19,10 +21,16 @@ module KMaps {
         public MakeMove(cell: Cell): void {
             this.grid.SetVal(cell, this.Turn);
             this.Turn = this.Turn == 0 ? 1 : 0;
+            this.moves++;
+        }
+
+        public IsFinished(): bool {
+            return this.moves == 32;
         }
 
         public Reset(): void {
             this.grid.Clear();
+            this.moves = 0;
             this.Turn = 0;
             this.players = [];
         }
