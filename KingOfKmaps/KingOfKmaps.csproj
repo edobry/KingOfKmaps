@@ -210,17 +210,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="base.ts" />
+    <Content Include="base.js">
+      <DependentUpon>base.ts</DependentUpon>
+    </Content>
+    <Content Include="base.min.js">
+      <DependentUpon>base.ts</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="base.js.map">
+      <DependentUpon>base.ts</DependentUpon>
+    </Content>
+    <Content Include="KMaps.js.map">
+      <DependentUpon>KMaps.ts</DependentUpon>
+    </Content>
+    <Content Include="main.js.map">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <TypeScriptCompile Include="KMaps2.ts" />
-    <Content Include="KMaps2.js">
-      <DependentUpon>KMaps2.ts</DependentUpon>
-    </Content>
-    <Content Include="KMaps2.min.js">
-      <DependentUpon>KMaps2.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="KMaps.ts" />
     <TypeScriptCompile Include="main.ts" />
+    <Content Include="KMaps.js">
+      <DependentUpon>KMaps.ts</DependentUpon>
+    </Content>
+    <Content Include="KMaps.min.js">
+      <DependentUpon>KMaps.ts</DependentUpon>
+    </Content>
     <Content Include="main.js">
       <DependentUpon>main.ts</DependentUpon>
     </Content>

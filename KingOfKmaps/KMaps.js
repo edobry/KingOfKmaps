@@ -11,9 +11,11 @@ var KMaps;
             return this.players[this.Turn].Name + "'s Turn: " + this.Turn;
         };
         Game.prototype.MakeMove = function (cell) {
-            this.grid.SetVal(cell, this.Turn);
-            this.Turn = this.Turn == 0 ? 1 : 0;
-            this.moves++;
+            if(this.grid.GetVal(cell) == null) {
+                this.grid.SetVal(cell, this.Turn);
+                this.Turn = this.Turn == 0 ? 1 : 0;
+                this.moves++;
+            }
         };
         Game.prototype.IsFinished = function () {
             return this.moves == 32;

@@ -3,9 +3,9 @@
 
 $(function () {
     var Game = new KMaps.Game([new KMaps.Person("Eugene"), new KMaps.Person("Paulina")]);
+    $("#turn").text(Game.CurrentTurn());
 
     $("#game table").find("td").click((e) => {
-        $("#turn").text(Game.CurrentTurn());
         var cell = $(e.target);
         if (cell.text() == "") {
             var x = cell.data("x") - 1;
@@ -13,6 +13,7 @@ $(function () {
 
             cell.text(Game.Turn);
             Game.MakeMove(new KMaps.Cell(x, y));
+            $("#turn").text(Game.CurrentTurn());
         }
     });
 
@@ -33,10 +34,8 @@ $(function () {
             
             var randCell = new KMaps.Cell(x, y);
             var cell = getCell(x, y);
-            if (cell.text() == "") {
-                Game.MakeMove(randCell);
-                cell.text(Game.Turn);
-            }
+            Game.MakeMove(randCell);
+            cell.text(Game.Turn);
         }
     });
 

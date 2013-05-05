@@ -19,9 +19,11 @@ module KMaps {
         }
 
         public MakeMove(cell: Cell): void {
-            this.grid.SetVal(cell, this.Turn);
-            this.Turn = this.Turn == 0 ? 1 : 0;
-            this.moves++;
+            if (this.grid.GetVal(cell) == null) {
+                this.grid.SetVal(cell, this.Turn);
+                this.Turn = this.Turn == 0 ? 1 : 0;
+                this.moves++;
+            }
         }
 
         public IsFinished(): bool {
